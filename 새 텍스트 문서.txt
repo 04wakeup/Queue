@@ -1,0 +1,34 @@
+
+public class CustomLinkedList {
+   public static void main (String[] args) {
+      IntNode headObj; // Create IntNode objects
+      IntNode currObj;
+      IntNode lastObj;
+      IntNode minObj;
+      int i;           // Loop index
+      
+      headObj = new IntNode(-1); // Front of nodes list
+      lastObj = headObj;
+      
+      
+      for (i = 0; i < 20; ++i) { // Append 20 rand nums
+         int rand = (int)(Math.random() * 100000); // random int (0-99999)
+         currObj = new IntNode(rand);
+         
+         lastObj.insertAfter(currObj); // Append curr
+         lastObj = currObj;
+      }
+      
+      minObj = headObj.getNext();
+      currObj = headObj; // Print the list
+      
+      while (currObj != null) {
+         currObj.printNodeData();
+         if (minObj.getValue() > currObj.getValue()) {
+             minObj = currObj;
+            }
+         currObj = currObj.getNext();
+      }
+      minObj.printNodeData();
+   }
+}
